@@ -1,0 +1,646 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="brouchers">
+  <ul class="breadcrumb">
+     <li class="breadcrumb-item">
+     <a href="#" style="text-decoration: none; color: black;">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+    <a href="#" style="text-decoration: none; color: black;">Products</a>
+    </li>
+    <li class="breadcrumb-item">
+    <span>Add Global Attributes</span>
+    </li>
+  </ul>
+</div>
+<div class="content-box">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="element-wrapper">
+            <h3 class="element-header">
+             Add Global Attributes
+            </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-lg-4">
+          <div class="product-box">
+    <div class="attribute">
+    <ul>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglecate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglesubcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Sub-Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleGsmTYpe" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add GsmType</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglevoltype" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add VolumeType</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglesize" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Sizes</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglegst" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add GST global</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglebestoffer" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Best Offers</button></li>
+    </ul>
+    </div>
+           <div class="modal fade" id="exampleModalTogglebestoffer" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Best Offers</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'bestoffers' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Title:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="title" placeholder="Title">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+       <div class="modal fade" id="exampleModalTogglecate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'addcategory' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Category Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+        <div class="modal fade" id="exampleModalTogglesubcate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Sub-Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'addsubcategory' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Sub-Category Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Category Name">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Image</label><br>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+              </div><br>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggleGsmTYpe" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add GsmTYpe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'gsmtype' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter GsmTypes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="gsmtype"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+              <div class="modal fade" id="exampleModalTogglevoltype" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'voltype' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter VolumeTypes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="voltype"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglesize" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Sizes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'sizes' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Sizes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="size"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglegst" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Gst</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'gst' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter GST %</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="gst"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+    </div>
+        <div class="col-lg-4">
+          <div class="product-box">
+    <div class="attribute">
+    <ul>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Trending Categories</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglebestseller" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Best Sellers</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">New Launches</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcate" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Trending Prodcuts</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopexpress" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Shipping Express </button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopplus" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Shipping Plus</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggleshopcoupon" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add  Coupon</button></li>
+    </ul>
+    </div>
+                      <div class="modal fade" id="exampleModalToggleshopcate" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Trending category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'shopbycate' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+            <label for="exampleFormControlFile1">Category</label><br>
+            <select name="cateid" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Category</option>
+                    {% for i in cate %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+
+            </select>
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglebestseller" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Best Seller Products</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'bestsellersimple' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1">Simple Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in sp %}
+
+                        <option  value="{{ i.id }}">{{ i.name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+         <form action="{% url  'bestsellervariable' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1"> Variable Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in vp %}
+
+                        <option  value="{{ i.id }}">{{ i.product.name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+         <form action="{% url  'bestsellergrouped' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1">Grouped Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in gp %}
+
+                        <option  value="{{ i.id }}">{{ i.description }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+           <div class="modal fade" id="exampleModalToggleshopexpress" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Express Shipping</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'expressshipping' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Zone:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_city" placeholder="Zone">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Maximum Weight in GMS:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_weight" placeholder="Maximum Weight">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Shiping Charge:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_charges" placeholder="Shipping Charges">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Air SHiping Charge:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_air_rate" placeholder="Shipping Air Charges">
+              </div>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+           <div class="modal fade" id="exampleModalToggleshopplus" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Plus-Shipping</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+         <div class="modal-body">
+          <form action="{% url  'plusshipping' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Zone:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_city" placeholder="Zone">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Maximum Weight in GMS:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_weight" placeholder="Maximum Weight">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Shiping Charge:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="shiping_charges" placeholder="Shipping Charges">
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+           <div class="modal fade" id="exampleModalToggleshopcoupon" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Coupon</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+         <div class="modal-body">
+          <form action="{% url  'coupon' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Coupon Code:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="coupon_code" placeholder="Coupon Code">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Discount in %:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="discount_percent" placeholder="Discount in %">
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+  </div>
+        <div class="col-lg-4">
+            <div class="product-box">
+    <div class="attribute">
+         <ul>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglehappyclients" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Happy Clients</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalTogglebloghome" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Blog HomePage</button></li>
+      <li><button  class="btn btn-primary"  data-bs-toggle="modal" href="#exampleModalToggletproducts" role="button"  style="text-decoration: none; color:white; font-weight: bold; min-width: 200px">Add Trending Products</button></li>
+         </ul>
+                <div class="modal fade" id="exampleModalToggletproducts" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add New lauches Products</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'newlauches' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1">Simple Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in sp %}
+
+                        <option  value="{{ i.id }}">{{ i.name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+         <form action="{% url  'newlaunchesvariable' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1"> Variable Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in vp %}
+
+                        <option  value="{{ i.id }}">{{ i.product.name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+         <form action="{% url  'newlaunchesgrouped' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+               <div class="form-group" style="background-color: white ; padding: 5px;">
+               <input hidden type="text" name="product_type" id="product_type">
+            <label for="exampleFormControlFile1">Grouped Products</label><br>
+            <select name="product_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option style="color: black; font-weight: bold"  selected>Choose Product</option>
+                    {% for i in gp %}
+
+                        <option  value="{{ i.id }}">{{ i.description }}</option>
+
+                {% endfor %}
+            </select>
+
+
+          </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglehappyclients" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Happy Client Review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'happyclients' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Client Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Clients Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Review</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review"></textarea>
+              </div>
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+          <div class="modal fade" id="exampleModalTogglebloghome" aria-hidden="true" aria-labelledby="exampleModalToggleCouponLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleCouponLabel">Add Happy Client Review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url  'blogaddhome' %}" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Title:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="title" placeholder="Title">
+              </div>
+               <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter BlogText</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Blogger Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Clients Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Blogger Image:</label>
+                <input type="file" class="form-control" id="name" aria-describedby="emailHelp" name="image" placeholder="Image">
+              </div>
+
+
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+  </div>
+
+  {% endblock content %}
